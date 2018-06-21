@@ -9,32 +9,36 @@ find monisen
 """
 from math import sqrt
 
-
-def prime(n):
-    if n == 1:
+def isprime(n):  # 判断是否为素数
+    if n < 2:
         return False
-    else:
-        k = int(sqrt(n))+1
-        for i in range(2,k):
-            if n%i == 0:
-                return False
-            else:
-                return True,n
+    for i in range(2, int(sqrt(n)) + 1):
+        if n % i == 0:
+            return False
+    return True
 
-def monisen(x):    
+
+
+def monisen(x):
+    p = 2
     count = 0
-    while count < x:
-        if prime(x):
-            M = 2**x -1
-        else:
-            continue
-        if prime(M):
-            count += count
-        else:
-            continue
+    if x ==0:
+        return
     else:
-        print(M)
- 
-    
-print(mon)
-#print(monisen(int(input())))
+        while 1:
+            if isprime(p):
+                M = 2 ** p - 1
+                if isprime(M):
+                    count += 1
+                    if count < x:
+                        p += 1
+                        continue
+                    else:
+                        break
+                else:
+                    p += 1
+            else:
+                p += 1
+    return M
+
+print(monisen(int(input())))
